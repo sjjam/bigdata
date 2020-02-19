@@ -27,10 +27,18 @@ public class HDFSCopyTest {
 			hdfsin = hdfs.open(inputpath);
 			hdfsout = hdfs.create(outputpath);
 			
-			String data = hdfsin.readUTF();
+			while(true) {
+				int data = hdfsin.read();
+				System.out.println((char)data);
+				if(data==-1) {
+					break;
+				}
+				hdfsout.write((char)data);
+			}
+			/*String data = hdfsin.readUTF();
 			System.out.println("hdfs 데이터:"+data);
 			
-			hdfsout.writeUTF(data);
+			hdfsout.writeUTF(data);*/
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
