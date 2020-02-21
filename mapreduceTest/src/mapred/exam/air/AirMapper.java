@@ -16,11 +16,9 @@ public class AirMapper extends Mapper<LongWritable, Text, Text, IntWritable>{
 		if(key.get()>0) {
 			String[] line = value.toString().split(",");
 			if(line!=null & line.length>0) {
-				outputkey.set(line[1]);
-				if(!line[15].equals("NA")) {
-					if(Double.parseDouble(line[15])>0) {
-						context.write(outputkey, outputVal);
-					}
+				if(!line[15].equals("NA") && Integer.parseInt(line[15])>0) {
+					outputkey.set(line[1]+"월");
+					context.write(outputkey, outputVal);
 				}
 			}
 		}
