@@ -14,7 +14,7 @@ public class AirDriver {
 
 	public static void main(String[] args) throws Exception {
 		Configuration conf = new Configuration();
-		Job job = new Job(conf,"mywordcount");
+		Job job = new Job(conf,"air");
 		
 		job.setMapperClass(AirMapper.class);
 		job.setReducerClass(AirReducer.class);
