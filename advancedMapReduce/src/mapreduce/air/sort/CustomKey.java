@@ -14,6 +14,7 @@ public class CustomKey implements WritableComparable<CustomKey>{
 
 	private String year;
 	private Integer month;
+	private Long mapkey;
 	
 	public CustomKey() {
 		
@@ -23,6 +24,21 @@ public class CustomKey implements WritableComparable<CustomKey>{
 		super();
 		this.year = year;
 		this.month = month;
+	}
+
+	public CustomKey(String year, Integer month, Long mapkey) {
+		super();
+		this.year = year;
+		this.month = month;
+		this.mapkey = mapkey;
+	}
+
+	public Long getMapkey() {
+		return mapkey;
+	}
+
+	public void setMapkey(Long mapkey) {
+		this.mapkey = mapkey;
 	}
 
 	public String getYear() {
@@ -55,6 +71,7 @@ public class CustomKey implements WritableComparable<CustomKey>{
 	public void write(DataOutput out) throws IOException {
 		WritableUtils.writeString(out, year);
 		out.writeInt(month);
+		out.writeLong(mapkey);
 	}
 	
 	//역직렬화될때 호출
@@ -62,6 +79,7 @@ public class CustomKey implements WritableComparable<CustomKey>{
 	public void readFields(DataInput in) throws IOException {
 		year = WritableUtils.readString(in);
 		month = in.readInt();
+		mapkey = in.readLong();
 	}
 
 	//사용자가 만들어 놓은 키를 기준으로 정렬하기 위해서 비교하게 할 메소드
