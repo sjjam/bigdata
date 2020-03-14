@@ -14,6 +14,7 @@
 		<typeAlias type="kr.multi.bigdataShop.member.login.LoginDTO" 
 		alias="loginmember"/>	 -->
 		<typeAlias type="kr.multi.bigdataShop.product.comment.ProductCommentDTO" alias="comment"/>
+		<typeAlias type="kr.multi.bigdataShop.product.comment.CommentDTO" alias="commentresult"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/board.xml"/>

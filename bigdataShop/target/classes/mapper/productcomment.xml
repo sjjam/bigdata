@@ -7,6 +7,14 @@
 		insert into pro_comment 
 		values(#{prd_no}, #{mem_id}, #{pro_comment}, sysdate)
 	</insert>
+	
+	<select id="result" resultType="commentresult">
+ 		select * 
+ 		from (select * from comment_result order by hit desc)
+ 		<![CDATA[
+ 		where rownum <= 10
+ 		]]>
+ 	</select>
 </mapper>
 
 
